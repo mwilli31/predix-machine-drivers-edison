@@ -42,7 +42,3 @@ echo '' >> /etc/systemd/system/starter-sensor-pub.service
 echo '[Install]' >> /etc/systemd/system/starter-sensor-pub.service
 echo 'WantedBy=multi-user.target' >> /etc/systemd/system/starter-sensor-pub.service
 
-echo "Enabling new service"
-sudo systemctl daemon-reload
-sudo systemctl start starter-sensor-pub
-sudo systemctl enable starter-sensor-pub
