@@ -4,9 +4,9 @@ cd ..
 git clone https://github.com/intel-iot-devkit/mraa.git
 echo "Installing dependencies"
 apt-get update
-apt-get install sudo
+apt-get --ignore-hold install sudo
 apt-get update
-sudo apt-get install -y git build-essential swig3.0 python-dev nodejs-dev cmake libzmq3-dev python-zmq
+sudo apt-get install -y --ignore-hold git build-essential swig3.0 python-dev nodejs-dev cmake libzmq3-dev python-zmq
 
 # Install mraa (complete these steps in the mraa directory)
 echo "Installing mraa"	
@@ -59,3 +59,4 @@ sudo make install
 echo "Linking packages"
 ln -s /usr/local/lib/python2.7/site-packages/* /usr/local/lib/python2.7/dist-packages
 echo "Setup Complete"
+cd ../../Install
