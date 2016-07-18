@@ -24,7 +24,7 @@ Following the creation of the driver, StarterKitDriverInstall.sh will create a S
 By default the data will publish to tcp://127.0.0.1:35690, local host. Flowthings will then take this data and upload it to flowthings.
 
 # Collecting and Publishing data
-Since the SystemD service is already created and running, the only necessary step is to attach the Grove Header to the board and attach the sensors.
+Since the SystemD service is already created and running, the only necessary step is to attach the Grove Header to the board and attach the sensors. After attaching the sensors, restart the board.
 The default placement of the sensors are: 
 	
 	A2 - Grove Light Sensor
@@ -32,3 +32,8 @@ The default placement of the sensors are:
 	UART - Grove Button
 	D2 - Grove Encoder
 	12C1 - Grove Temperature & Humidity Sensor
+
+# Viewing the data
+After attaching the sensors and restarting the board, run the following command to view the data.
+
+	journalctl -f -u starter-sensor-pub

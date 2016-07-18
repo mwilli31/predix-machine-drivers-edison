@@ -8,6 +8,7 @@ with open('DriverRegistryStarter.json') as data_file:
 numDrivers = len(driverData["drivers"])
 importList = []
 nameList = []
+unitsList = []
 pinNumberList = []
 sensorObjectList = []
 dataCollectorList = []
@@ -19,6 +20,7 @@ driverFile = open(driverData["name"], 'w')
 for i in range(0, numDrivers):
 	importList.append(driverData["drivers"][i]["import"])
 	nameList.append(driverData["drivers"][i]["name"])
+	unitsList.append(driverData["drivers"][i]["units"])
 	pinNumberList.append(driverData["drivers"][i]["pinNumber"])
 	sensorObjectList.append(driverData["drivers"][i]["sensorObject"])
 	dataCollectorList.append(driverData["drivers"][i]["dataCollector"])
@@ -54,7 +56,8 @@ for i in range(0, numDrivers):
 driverFile.write("#Publish sensor data\n")
 for i in range(0, numDrivers):
 	driverFile.write("\tsocket.send_multipart([\'" + publisherIdList[i] + "\', dumps({\"name\": \"" + nameList[i] + "\", \"datapoints\":[[int(time() * 1000), " + nameList[i] + "Data, quality]]})])\n")
-	driverFile.write("\tprint " + nameList[i] + "Data\n")
+	driverFile.write("\tprint str(" + nameList[i] + "Data) + \" " + unitsList[i] + "\"\n")
+driverFile.write("\tprint \"-------------------------\"\n\n")
 
 driverFile.write("\n\tsleep(INTERVAL_SEC)")
 driverFile.close()
