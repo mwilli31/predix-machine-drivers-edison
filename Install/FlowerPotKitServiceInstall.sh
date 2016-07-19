@@ -1,3 +1,4 @@
+#!/bin/bash
 cd ..
 driverpath="$PWD"
 cd Install
