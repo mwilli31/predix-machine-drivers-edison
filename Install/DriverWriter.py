@@ -64,7 +64,7 @@ for i in range(0, numDrivers):
 		#driverFile.write("\t\tprint " + nameList[i] + " sensor disconnected\n")
 	#else:
 		driverFile.write("\t" + nameList[i] + "Data = " + nameList[i] + "." + dataCollectorList[i] + "\n")
-		driverFile.write("\tsocket.send_multipart([\'" + tagList[i] + "\', dumps({\"name\": \"" + tagList[i] + "\", \"datapoints\":[[int(time() * 1000), " + nameList[i] + "Data, quality]]})])\n")
+		driverFile.write("\tsocket.send_multipart([\'" + tagList[i] + "\', dumps({\"name\": \"" + tagList[i] + "\", \"datapoints\":[[int(time() * 1000), float(" + nameList[i] + "Data), quality]]})])\n")
 		driverFile.write("\tprint str(" + nameList[i] + "Data) + \" " + unitsList[i] + "\"\n")
 
 driverFile.write("\tprint \"-------------------------\"\n\n")
