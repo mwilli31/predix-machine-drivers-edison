@@ -1,14 +1,17 @@
 import json
 from pprint import pprint
+import sys
 
 #open json file
-with open('DriverRegistryStarter.json') as data_file:
+with open(str(sys.argv[1])) as data_file:
 	driverData = json.load(data_file)
 
 numDrivers = len(driverData["drivers"])
 importList = []
 nameList = []
+tagList = []
 unitsList = []
+typeList = []
 pinNumberList = []
 sensorObjectList = []
 dataCollectorList = []
@@ -20,7 +23,9 @@ driverFile = open(driverData["name"], 'w')
 for i in range(0, numDrivers):
 	importList.append(driverData["drivers"][i]["import"])
 	nameList.append(driverData["drivers"][i]["name"])
+	tagList.append(driverData["drivers"][i]["tag"])
 	unitsList.append(driverData["drivers"][i]["units"])
+	typeList.append(driverData["drivers"][i]["type"])
 	pinNumberList.append(driverData["drivers"][i]["pinNumber"])
 	sensorObjectList.append(driverData["drivers"][i]["sensorObject"])
 	dataCollectorList.append(driverData["drivers"][i]["dataCollector"])
@@ -47,16 +52,21 @@ driverFile.write("#Vars from environment\nZMQ_SENSOR_PUB_IP = getenv('ZMQ_SENSOR
 driverFile.write("#Continously collect and publish data from sensors\n")
 driverFile.write("while True:\n")
 
-#write data collectors
-driverFile.write("#Collect data from sensors\n")
-for i in range(0, numDrivers):
-	driverFile.write("\t" + nameList[i] + "Data = " + nameList[i] + "." + dataCollectorList[i] + "\n")
-
-#write data publishers
+#write data collectors and publishers
 driverFile.write("#Publish sensor data\n")
 for i in range(0, numDrivers):
-	driverFile.write("\tsocket.send_multipart([\'" + publisherIdList[i] + "\', dumps({\"name\": \"" + nameList[i] + "\", \"datapoints\":[[int(time() * 1000), " + nameList[i] + "Data, quality]]})])\n")
-	driverFile.write("\tprint str(" + nameList[i] + "Data) + \" " + unitsList[i] + "\"\n")
+	#if typeList[i] == "I2C": 
+		#driverFile.write("\ttry:\n")
+		#driverFile.write("\t\t" + nameList[i] + "Data = " + nameList[i] + "." + dataCollectorList[i] + "\n")
+		#driverFile.write("\t\tsocket.send_multipart([\'" + publisherIdList[i] + "\', dumps({\"name\": \"" + nameList[i] + "\", \"datapoints\":[[int(time() * 1000), " + nameList[i] + "Data, quality]]})])\n")
+		#driverFile.write("\t\tprint str(" + nameList[i] + "Data) + \" " + unitsList[i] + "\"\n")
+		#driverFile.write("\texcept:\n")
+		#driverFile.write("\t\tprint " + nameList[i] + " sensor disconnected\n")
+	#else:
+		driverFile.write("\t" + nameList[i] + "Data = " + nameList[i] + "." + dataCollectorList[i] + "\n")
+		driverFile.write("\tsocket.send_multipart([\'" + publisherIdList[i] + "\', dumps({\"name\": \"" + tagList[i] + "\", \"datapoints\":[[int(time() * 1000), " + nameList[i] + "Data, quality]]})])\n")
+		driverFile.write("\tprint str(" + nameList[i] + "Data) + \" " + unitsList[i] + "\"\n")
+
 driverFile.write("\tprint \"-------------------------\"\n\n")
 
 driverFile.write("\n\tsleep(INTERVAL_SEC)")
