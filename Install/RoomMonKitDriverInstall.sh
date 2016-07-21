@@ -6,7 +6,8 @@ cd upm
 #Install Starter Kit Drivers
 mv offered_drivers/grove src
 mv offered_drivers/guvas12d src
-mv offered_drivers/my9221 src
+mv offered_drivers/th02 src
+mv offered_drivers/biss0001 src
 cd build
 echo "Compiling libraries"
 cmake .. -DBUILDSWIGNODE=OFF
