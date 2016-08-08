@@ -14,3 +14,7 @@ echo 'RestartSec=10' >> /etc/systemd/system/flowpot-sensor-pub.service
 echo '' >> /etc/systemd/system/flowpot-sensor-pub.service
 echo '[Install]' >> /etc/systemd/system/flowpot-sensor-pub.service
 echo 'WantedBy=multi-user.target' >> /etc/systemd/system/flowpot-sensor-pub.service
+#Start Service
+sudo systemctl daemon-reload
+sudo systemctl start flowpot-sensor-pub
+sudo systemctl enable flowpot-sensor-pub

@@ -14,3 +14,7 @@ echo 'RestartSec=10' >> /etc/systemd/system/roommon-sensor-pub.service
 echo '' >> /etc/systemd/system/roommon-sensor-pub.service
 echo '[Install]' >> /etc/systemd/system/roommon-sensor-pub.service
 echo 'WantedBy=multi-user.target' >> /etc/systemd/system/roommon-sensor-pub.service
+#start the service
+sudo systemctl daemon-reload
+sudo systemctl start roommon-sensor-pub
+sudo systemctl enable roommon-sensor-pub
