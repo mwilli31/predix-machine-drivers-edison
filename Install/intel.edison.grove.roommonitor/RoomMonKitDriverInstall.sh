@@ -1,16 +1,12 @@
 #!/bin/bash
 #Find upm
-cd ..
-cd upm
+cd /predix/predix-machine-drivers-edison/upm
 
 #Install Starter Kit Drivers
 mv offered_drivers/grove src
-mv offered_drivers/rotaryencoder src
-mv offered_drivers/gas src
-mv offered_drivers/th02 src
 mv offered_drivers/guvas12d src
-mv offered_drivers/my9221 src
-mv offered_drivers/lcd src
+mv offered_drivers/th02 src
+mv offered_drivers/biss0001 src
 cd build
 echo "Compiling libraries"
 cmake .. -DBUILDSWIGNODE=OFF
@@ -25,6 +21,7 @@ echo "Creating drivers"
 cd .. 
 cd ..
 cd Install
-python DriverWriter.py
-mv starter_sensor_pub.py ..
-./StarterKitServiceInstall.sh
+python DriverWriter.py intel.edison.grove.roommonitor/DriverRegistryRoomMon.json
+mv roommon_sensor_pub.py ..
+cd intel.edison.grove.roommonitor
+./RoomMonKitServiceInstall.sh

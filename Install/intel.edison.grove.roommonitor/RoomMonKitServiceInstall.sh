@@ -1,7 +1,6 @@
 #!/bin/bash
-cd ..
+cd /predix/predix-machine-drivers-edison
 driverpath="$PWD"
-cd Install
 #Publish Service
 echo '[Unit]' > /etc/systemd/system/roommon-sensor-pub.service
 echo 'Description=Flower Pot Sensor Data Publisher' >> /etc/systemd/system/roommon-sensor-pub.service

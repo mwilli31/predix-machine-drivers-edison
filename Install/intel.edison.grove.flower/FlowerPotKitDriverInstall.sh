@@ -1,13 +1,13 @@
 #!/bin/bash
 #Find upm
-cd ..
-cd upm
+cd /predix/predix-machine-drivers-edison/upm
 
 #Install Starter Kit Drivers
 mv offered_drivers/grove src
 mv offered_drivers/guvas12d src
+mv offered_drivers/my9221 src
 mv offered_drivers/th02 src
-mv offered_drivers/biss0001 src
+mv offered_drivers/grovemoisture src
 cd build
 echo "Compiling libraries"
 cmake .. -DBUILDSWIGNODE=OFF
@@ -22,6 +22,7 @@ echo "Creating drivers"
 cd .. 
 cd ..
 cd Install
-python DriverWriter.py DriverRegistryRoomMon.json
-mv roommon_sensor_pub.py ..
-./RoomMonKitServiceInstall.sh
+python DriverWriter.py intel.edison.grove.flower/DriverRegistryFlowPot.json
+mv flowpot_sensor_pub.py ..
+cd intel.edison.grove.flower
+./FlowerPotKitServiceInstall.sh
