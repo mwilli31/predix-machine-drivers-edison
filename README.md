@@ -1,39 +1,28 @@
 # predix-machine-drivers-edison
 Edison drivers for Predix Machine
 
-# Setting up mraa and upm
-Mraa and upm are required by all grove sensors to be able to interact with the Edison.
-To install mraa and upm:
-	
-	cd /predix/predix-machine-drivers-edison/Install
-	./GroveSetupRequired.sh
+# How to Use
+The drivers are downloaded and installed from the provision script with the -k argument
 
-This command will install the required dependencies for mraa and upm, clone both from github, and install necessary libraries.
-However, this script is called by /predix/InitialSetup.sh and is included already in the flash image.
+	/predix/debian-scripts/provision.sh -k <kit type>
 
-# Setting up the Starter Kit Sensors
-To install the specific sensors for the Starter Kit:
-	
-	cd /predix
-	./provision.sh
+Replace <kit type> with which kit type you would like to download and install, for a full list of kits replace kit type with "help"
 
-This script will update all files from git. 
-Also, it will call StarterKitDriverInstall.sh. This will install the necessary libraries from upm for the specific sensors and call DriverWriter.py.
-DriverWriter will write a python driver to collect and publish data using ZeroMQ according to the data in DriverRegistryStarter.json.
-Following the creation of the driver, StarterKitDriverInstall.sh will create a SystemD service to start running the new driver in the background on startup.
-By default the data will publish to tcp://127.0.0.1:35690, local host. Flowthings will then take this data and upload it to flowthings.
+View the README for the specific kit you downloaded to learn how to use the sensors and view your data
 
-# Collecting and Publishing data
-Since the SystemD service is already created and running, the only necessary step is to attach the Grove Header to the board and attach the sensors. After attaching the sensors, restart the board.
-The default placement of the sensors are: 
-	
-	A2 - Grove Light Sensor
-	A3 - Grove UV Sensor
-	UART - Grove Button
-	D2 - Grove Encoder
-	12C1 - Grove Temperature & Humidity Sensor
+The README will be placed in:
 
-# Viewing the data
-After attaching the sensors and restarting the board, run the following command to view the data.
+	/predix/predix-machine-drivers-edison/Install/<kit type>/README.md
 
-	journalctl -f -u starter-sensor-pub
+# Info
+A full list of kits offered is in kits_offered.txt, this file is read to the user when they use the help argument
+
+Each time a new kit is added, the name of the kit's specific directory should be added to kits_offered.txt
+
+If a kit is not on the kits_offered list, the script will stop and provisioning will end
+
+Each kit is placed in its own directory in the Install directory
+
+Each kit contains a setup.sh file, this script should do all necessary calls to download and install dependencies, create the driver and create and start the service
+
+Each kit contains its own README that shows how to set up the kit and how to view your data
