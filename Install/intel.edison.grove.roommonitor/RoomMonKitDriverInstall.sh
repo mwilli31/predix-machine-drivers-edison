@@ -18,9 +18,7 @@ echo "Linking packages"
 ln -s /usr/local/lib/python2.7/site-packages/* /usr/local/lib/python2.7/dist-packages
 
 echo "Creating drivers"
-cd .. 
-cd ..
-cd Install
+cd /predix/predix-machine-drivers-edison/Install
 python DriverWriter.py intel.edison.grove.roommonitor/DriverRegistryRoomMon.json
 mv roommon_sensor_pub.py ..
 cd intel.edison.grove.roommonitor
