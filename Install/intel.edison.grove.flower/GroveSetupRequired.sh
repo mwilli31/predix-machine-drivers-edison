@@ -19,8 +19,7 @@ sudo make install
 
 # Set up upm, this contains drivers for all of your sensors
 #	clone the directory:
-cd ..
-cd ..
+cd /predix/predix-machine-drivers-edison
 echo "Downloading upm"
 git clone https://github.com/intel-iot-devkit/upm.git
 
