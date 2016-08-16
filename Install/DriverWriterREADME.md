@@ -57,6 +57,4 @@ All fields are required, at the top level there is "name" and "drivers"
 	dataCollector
 		method to call to collect data from the sensor
 
-	publisherId
-		currently unused, can be arbitrary but must be included
 	

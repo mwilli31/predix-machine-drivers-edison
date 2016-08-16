@@ -15,7 +15,6 @@ typeList = []
 pinNumberList = []
 sensorObjectList = []
 dataCollectorList = []
-publisherIdList = []
 
 driverFile = open(driverData["name"], 'w')
 
@@ -29,7 +28,6 @@ for i in range(0, numDrivers):
 	pinNumberList.append(driverData["drivers"][i]["pinNumber"])
 	sensorObjectList.append(driverData["drivers"][i]["sensorObject"])
 	dataCollectorList.append(driverData["drivers"][i]["dataCollector"])
-	publisherIdList.append(driverData["drivers"][i]["publisherId"])
 	
 #write imports
 driverFile.write("from time import sleep, time\nimport zmq\nfrom json import dumps\nfrom os import getenv\n")
@@ -55,14 +53,6 @@ driverFile.write("while True:\n")
 #write data collectors and publishers
 driverFile.write("#Publish sensor data\n")
 for i in range(0, numDrivers):
-	#if typeList[i] == "I2C": 
-		#driverFile.write("\ttry:\n")
-		#driverFile.write("\t\t" + nameList[i] + "Data = " + nameList[i] + "." + dataCollectorList[i] + "\n")
-		#driverFile.write("\t\tsocket.send_multipart([\'" + publisherIdList[i] + "\', dumps({\"name\": \"" + nameList[i] + "\", \"datapoints\":[[int(time() * 1000), " + nameList[i] + "Data, quality]]})])\n")
-		#driverFile.write("\t\tprint str(" + nameList[i] + "Data) + \" " + unitsList[i] + "\"\n")
-		#driverFile.write("\texcept:\n")
-		#driverFile.write("\t\tprint " + nameList[i] + " sensor disconnected\n")
-	#else:
 		driverFile.write("\t" + nameList[i] + "Data = " + nameList[i] + "." + dataCollectorList[i] + "\n")
 		driverFile.write("\tsocket.send_multipart([\'" + tagList[i] + "\', dumps({\"name\": \"" + tagList[i] + "\", \"datapoints\":[[int(time() * 1000), float(" + nameList[i] + "Data), quality]]})])\n")
 		driverFile.write("\tprint str(" + nameList[i] + "Data) + \" " + unitsList[i] + "\"\n")
