@@ -2,12 +2,17 @@
 
 # How to Use
 
-The Driver Writer takes in a json file as input and then writes a python driver that publishes grove sensor data to local host port 35690
+The Driver Writer takes in a json file as input and then writes a driver (DriverWriterPython produces python drivers and DriverWriterNode produces node drivers) that publishes grove sensor data to local host port 35690
 
 ex:
-	python DriverWriter.py intel.edison.grove.flower/DriverRegistryFlowPot.json
+	python DriverWriterPython.py intel.edison.grove.flower.python/DriverRegistryFlowPot.json
 
-This will output a file flowpot_sensor_pub.py
+	This will output a file flower_pot.py
+
+	
+	python DriverWriterNode.py intel.edison.grove.flower.node/DriverRegistryFlowPot.json
+
+	This will output a file flower_pot.js
 
 # Info
 
@@ -29,12 +34,14 @@ A while loop is then created that collects the data from the sensors and publish
 
 All fields are required, at the top level there is "name" and "drivers"
 
-"name" is a string, the value should be the name you want the driver to have ex: flowpot_sensor_pub.py
+"name" is a string, the value should be the name you want the driver to have ex: flower_pot.py
+	
+	Make sure to have the name end in .py for python drivers and .js for node drivers
 
-"drivers" is an array of json with the required fields "import," "name," "tag," "units," "type," "pinNumber," "sensorObject," "dataCollector," and "publisherId"
+"drivers" is an array of json with the required fields "import," "name," "tag," "units," "type," "pinNumber," "sensorObject," and "dataCollector"
 
 	import
-		python module to import
+		module to import
 
 	name
 		name of the object for this sensor (can be arbitrary)
