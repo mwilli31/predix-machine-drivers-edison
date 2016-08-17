@@ -56,7 +56,7 @@ requiredSetupFile.write("#!/bin/bash\n" +
 "curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -\n" +
 "apt-get install -y --ignore-hold sudo git swig3.0 build-essential python-dev cmake libzmq3-dev nodejs\n" +
 "npm install zmq\n" +
-"mv /root/node_modules/zmq /usr/local/lib/node_modules\n" +
+"mv /predix/predix-machine-drivers-edison/node_modules/zmq /usr/local/lib/node_modules\n" +
 "# Install mraa (complete these steps in the mraa directory)\n" +
 "echo \"Installing mraa\"\n" +
 "pwd\n" +

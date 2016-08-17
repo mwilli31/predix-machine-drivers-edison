@@ -8,7 +8,7 @@ apt-get update
 curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 apt-get install -y --ignore-hold sudo git swig3.0 build-essential python-dev cmake libzmq3-dev nodejs
 npm install zmq
-mv /root/node_modules/zmq /usr/local/lib/node_modules
+mv /predix/predix-machine-drivers-edison/node_modules/zmq /usr/local/lib/node_modules
 # Install mraa (complete these steps in the mraa directory)
 echo "Installing mraa"
 pwd
