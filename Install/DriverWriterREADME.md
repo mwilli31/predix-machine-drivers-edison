@@ -5,6 +5,7 @@
 The Driver Writer takes in a json file as input and then writes a driver (DriverWriterPython produces python drivers and DriverWriterNode produces node drivers) that publishes grove sensor data to local host port 35690
 
 ex:
+	
 	python DriverWriterPython.py intel.edison.grove.flower.python/DriverRegistryFlowPot.json
 
 	This will output a file flower_pot.py
