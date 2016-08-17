@@ -81,6 +81,7 @@ requiredSetupFile.write("#!/bin/bash\n" +
 "mv offered_drivers/CMakeLists.txt src\n" +
 "mv offered_drivers/pkgconfig.in src\n" +
 "mv offered_drivers/package.json.in src\n" +
+"mv offered_drivers/package.json.in src\n" +
 "mv offered_drivers/javaswig_blacklist src\n" +
 "mv offered_drivers/pythonswig_blacklist src\n" +
 "mv offered_drivers/nodeswig_blacklist src\n" +
