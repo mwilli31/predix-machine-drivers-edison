@@ -165,4 +165,22 @@ serviceInstallFile.write("#!/bin/bash\n" +
 
 serviceInstallFile.close()
 
+print "Writing README"
+#write README
+readMEFile = open(str(sys.argv[1])[:str(sys.argv[1]).rfind('/')] + "/README.md", 'w')
+
+readMEFile.write("# " + kitName + "\n\n" +
+"# Sensor Setup\n")
+
+for i in range(0, numDrivers):
+	if typeList[i] == "I2C" :
+		readMEFile.write(nameList[i] + " - I2C\n")
+	else :
+		readMEFile.write(nameList[i] + " - " + typeList[i] + " " + pinNumberList[i] + "\n")
+
+readMEFile.write("\n# Viewing Data\n" + 
+"journalctl -f -u " + kitName)
+
+readMEFile.close()
+
 print "***Complete***"
