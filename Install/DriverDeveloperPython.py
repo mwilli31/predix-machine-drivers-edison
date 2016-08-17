@@ -172,9 +172,9 @@ readMEFile.write("# " + kitName + "\n\n" +
 
 for i in range(0, numDrivers):
 	if typeList[i] == "I2C" :
-		readMEFile.write(nameList[i] + " - I2C\n")
+		readMEFile.write(nameList[i] + " - I2C\n\n")
 	else :
-		readMEFile.write(nameList[i] + " - " + typeList[i] + " " + pinNumberList[i] + "\n")
+		readMEFile.write(nameList[i] + " - " + typeList[i] + " " + pinNumberList[i] + "\n\n")
 
 readMEFile.write("\n# Viewing Data\n" + 
 "journalctl -f -u " + kitName)
