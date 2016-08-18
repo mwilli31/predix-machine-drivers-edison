@@ -155,6 +155,8 @@ serviceInstallFile.write("#!/bin/bash\n" +
 "echo \'ExecStart=/usr/bin/node \'$driverpath\'/" + str(driverData["name"]) + "\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'Restart=always\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'RestartSec=10\' >> /etc/systemd/system/" + kitName + ".service\n" +
+"echo \'Environment=NODE_ENV=production\' >> /etc/systemd/system/" + kitName + ".service\n" +
+"echo \'Environment=NODE_PATH=/usr/lib/node_modules/:/usr/local/lib/node_modules\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'[Install]\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'WantedBy=multi-user.target\' >> /etc/systemd/system/" + kitName + ".service\n" +
