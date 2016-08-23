@@ -1,7 +1,9 @@
 # flower_pot
 
 # Sensor Setup
-temperature - Analog 2
+temperature - I2C
+
+humidity - I2C
 
 light - Analog 1
 

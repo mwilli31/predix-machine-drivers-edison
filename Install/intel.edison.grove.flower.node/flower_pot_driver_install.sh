@@ -3,7 +3,8 @@
 cd /predix/predix-machine-drivers-edison/upm
 
 #Install Drivers
-mv offered_drivers/grove src
+mv offered_drivers/th02 src
+mv offered_drivers/th02 src
 mv offered_drivers/grove src
 mv offered_drivers/grovemoisture src
 cd build
