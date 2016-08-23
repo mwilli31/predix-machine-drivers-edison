@@ -21,6 +21,8 @@ Each time a new kit is added, the name of the kit's specific directory should be
 
 If a kit is not on the kits_offered list, the script will stop and provisioning will end
 
+*Important* Make sure to keep help as the last kit in kits_offered.txt to prevent bugs
+
 Each kit is placed in its own directory in the Install directory
 
 Each kit contains a setup.sh file, this script should do all necessary calls to download and install dependencies, create the driver and create and start the service
