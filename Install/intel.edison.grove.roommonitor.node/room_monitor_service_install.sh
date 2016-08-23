@@ -7,7 +7,7 @@ echo 'Description=room_monitor Data Publisher' >> /etc/systemd/system/room_monit
 echo 'After=network.target' >> /etc/systemd/system/room_monitor.service
 echo '' >> /etc/systemd/system/room_monitor.service
 echo '[Service]' >> /etc/systemd/system/room_monitor.service
-echo 'ExecStart=/usr/bin/node '$driverpath'/room_monitor.py' >> /etc/systemd/system/room_monitor.service
+echo 'ExecStart=/usr/bin/node '$driverpath'/room_monitor.js' >> /etc/systemd/system/room_monitor.service
 echo 'Restart=always' >> /etc/systemd/system/room_monitor.service
 echo 'RestartSec=10' >> /etc/systemd/system/room_monitor.service
 echo 'Environment=NODE_ENV=production' >> /etc/systemd/system/room_monitor.service
