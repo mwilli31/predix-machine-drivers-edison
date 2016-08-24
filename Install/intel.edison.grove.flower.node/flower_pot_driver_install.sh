@@ -21,7 +21,6 @@ echo "Creating drivers"
 cd ..
 cd ..
 cd Install
-python DriverWriterNode.py intel.edison.grove.flower.node/DriverRegistryFlowPot.json
 mv flower_pot.js ..
 cd intel.edison.grove.flower.node
 ./flower_pot_service_install.sh

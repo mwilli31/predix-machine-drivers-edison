@@ -36,6 +36,7 @@ echo "Copying drivers from offered_drivers to src"
 mv offered_drivers/CMakeLists.txt src
 mv offered_drivers/pkgconfig.in src
 mv offered_drivers/package.json.in src
+mv offered_drivers/package.json.in src
 mv offered_drivers/javaswig_blacklist src
 mv offered_drivers/pythonswig_blacklist src
 mv offered_drivers/nodeswig_blacklist src

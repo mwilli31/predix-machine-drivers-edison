@@ -22,7 +22,6 @@ echo "Creating drivers"
 cd ..
 cd ..
 cd Install
-python DriverWriterNode.py intel.edison.grove.roommonitor.node/DriverRegistryRoomMon.json
 mv room_monitor.js ..
 cd intel.edison.grove.roommonitor.node
 ./room_monitor_service_install.sh
