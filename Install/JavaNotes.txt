@@ -1,0 +1,21 @@
+# What has been done
+The Driver Developer has been used to install mraa and upm, attempt to setup the driver and create the service
+
+To learn more in depth on what the Driver Developer is actually doing, read the DriverDeveloperREADME
+
+Mraa and upm should be installed properly in the GroveSetupRequired file
+
+The upm libraries have been installed
+
+# What needs to be done
+All editing should be done in DriverDeveloperJava when done testing, this will allow you to replicate these drivers
+	The DriverDeveloper simply writes the files in order, to get information about the different json data used, read the section in the DriverDeveloperREADME
+
+The driver specific libraries (upm_th02, upm_grove ... etc) need to be properly linked
+	You will get an issue with java.library.path not being able to load modules
+
+The driver setup script has to be made to compile the java (I tried doing a javac of the .java file)
+	This must be done before reaching the service setup script
+
+The service setup script should run properly, if a different method is used to run the java other than a javac <name>.java followed by java <name>, edit the line starting with ExecStart
+	Note: all paths must be absolute	

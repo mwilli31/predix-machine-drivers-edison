@@ -63,7 +63,9 @@ requiredSetupFile.write("#!/bin/bash\n" +
 "cd mraa\n" +
 "mkdir build\n" +
 "cd build\n" +
-"cmake ..\n" +
+"export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-i386\n" +
+"cmake .. -DBUILDSWIGJAVA=ON -DBUILD_SHARED_LIBS=OFF -DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-8-openjdk-i386/include -DJAVA_INCLUDE_PATH2=/usr/lib/jvm/java-8-openjdk-i386/include/linux\n" +
+"ln -s /usr/lib/jvm/java-8-openjdk-i386/include/linux/* /usr/lib/jvm/java-8-openjdk-i386/include/\n" +
 "make\n" +
 "sudo make install\n\n" +
 "# Set up upm, this contains drivers for all of your sensors\n" +
@@ -98,7 +100,7 @@ requiredSetupFile.write("#!/bin/bash\n" +
 "mv offered_drivers/carrays_uint8_t.i src\n\n" +
 "cd build\n" +
 "echo \"Compiling libraries\"\n" +
-"cmake ..\n" +
+"cmake .. -DBUILDSWIGJAVA=ON -DBUILD_SHARED_LIBS=OFF -DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-8-openjdk-i386/include -DJAVA_INCLUDE_PATH2=/usr/lib/jvm/java-8-openjdk-i386/include/linux\n" +
 "make\n" +
 "echo \"Installing libraries\"\n" +
 "sudo make install\n\n" +
@@ -151,11 +153,9 @@ serviceInstallFile.write("#!/bin/bash\n" +
 "echo \'After=network.target\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'[Service]\' >> /etc/systemd/system/" + kitName + ".service\n" +
-"echo \'ExecStart=/usr/bin/node \'$driverpath\'/" + str(driverData["name"]) + "\' >> /etc/systemd/system/" + kitName + ".service\n" +
+"echo \'ExecStart=/usr/bin/java \'$driverpath\'/" + kitName + "\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'Restart=always\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'RestartSec=10\' >> /etc/systemd/system/" + kitName + ".service\n" +
-"echo \'Environment=NODE_ENV=production\' >> /etc/systemd/system/" + kitName + ".service\n" +
-"echo \'Environment=NODE_PATH=/usr/lib/node_modules/:/usr/local/lib/node_modules\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'[Install]\' >> /etc/systemd/system/" + kitName + ".service\n" +
 "echo \'WantedBy=multi-user.target\' >> /etc/systemd/system/" + kitName + ".service\n" +

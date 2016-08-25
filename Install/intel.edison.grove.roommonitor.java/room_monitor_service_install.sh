@@ -7,8 +7,7 @@ echo 'Description=room_monitor Data Publisher' >> /etc/systemd/system/room_monit
 echo 'After=network.target' >> /etc/systemd/system/room_monitor.service
 echo '' >> /etc/systemd/system/room_monitor.service
 echo '[Service]' >> /etc/systemd/system/room_monitor.service
-echo 'ExecStart=/usr/bin/python '$driverpath'/room_monitor.py' >> /etc/systemd/system/room_monitor.service
-echo 'Environment=PYTHONUNBUFFERED=1' >> /etc/systemd/system/room_monitor.service
+echo 'ExecStart=/usr/bin/java '$driverpath'/room_monitor' >> /etc/systemd/system/room_monitor.service
 echo 'Restart=always' >> /etc/systemd/system/room_monitor.service
 echo 'RestartSec=10' >> /etc/systemd/system/room_monitor.service
 echo '' >> /etc/systemd/system/room_monitor.service

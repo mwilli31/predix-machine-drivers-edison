@@ -6,11 +6,12 @@ cd /predix/predix-machine-drivers-edison/upm
 mv offered_drivers/th02 src
 mv offered_drivers/th02 src
 mv offered_drivers/grove src
-mv offered_drivers/grovemoisture src
+mv offered_drivers/grove src
+mv offered_drivers/biss0001 src
 cd build
 echo "Compiling libraries"
-cmake .. -DBUILDSWIGNODE=OFF
-make -i
+cmake ..
+make 
 echo "Installing libraries"
 sudo make install
 
@@ -21,6 +22,6 @@ echo "Creating drivers"
 cd ..
 cd ..
 cd Install
-mv flower_pot.py ..
-cd intel.edison.grove.flower.python
-./flower_pot_service_install.sh
+mv room_monitor.java ..
+cd intel.edison.grove.roommonitor.java
+./room_monitor_service_install.sh

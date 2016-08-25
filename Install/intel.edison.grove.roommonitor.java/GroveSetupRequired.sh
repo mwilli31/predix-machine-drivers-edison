@@ -15,7 +15,9 @@ pwd
 cd mraa
 mkdir build
 cd build
-cmake ..
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-i386
+cmake .. -DBUILDSWIGJAVA=ON -DBUILD_SHARED_LIBS=OFF -DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-8-openjdk-i386/include -DJAVA_INCLUDE_PATH2=/usr/lib/jvm/java-8-openjdk-i386/include/linux
+ln -s /usr/lib/jvm/java-8-openjdk-i386/include/linux/* /usr/lib/jvm/java-8-openjdk-i386/include/
 make
 sudo make install
 
@@ -53,7 +55,7 @@ mv offered_drivers/carrays_uint8_t.i src
 
 cd build
 echo "Compiling libraries"
-cmake ..
+cmake .. -DBUILDSWIGJAVA=ON -DBUILD_SHARED_LIBS=OFF -DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-8-openjdk-i386/include -DJAVA_INCLUDE_PATH2=/usr/lib/jvm/java-8-openjdk-i386/include/linux
 make
 echo "Installing libraries"
 sudo make install
