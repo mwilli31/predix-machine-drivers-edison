@@ -1,18 +1,16 @@
 #!/bin/bash
 #Find upm
-cd ..
-cd upm
+cd /predix/predix-machine-drivers-edison/upm
 
-#Install Starter Kit Drivers
-mv offered_drivers/grove src
-mv offered_drivers/guvas12d src
-mv offered_drivers/my9221 src
+#Install Drivers
 mv offered_drivers/th02 src
+mv offered_drivers/th02 src
+mv offered_drivers/grove src
 mv offered_drivers/grovemoisture src
 cd build
 echo "Compiling libraries"
-cmake .. -DBUILDSWIGNODE=OFF
-make -i
+cmake ..
+make 
 echo "Installing libraries"
 sudo make install
 
@@ -20,9 +18,9 @@ echo "Linking packages"
 ln -s /usr/local/lib/python2.7/site-packages/* /usr/local/lib/python2.7/dist-packages
 
 echo "Creating drivers"
-cd .. 
+cd ..
 cd ..
 cd Install
-python DriverWriter.py DriverRegistryFlowPot.json
-mv flowpot_sensor_pub.py ..
-./FlowerPotKitServiceInstall.sh
+mv flower_pot.js ..
+cd intel.edison.grove.flower.node
+./flower_pot_service_install.sh

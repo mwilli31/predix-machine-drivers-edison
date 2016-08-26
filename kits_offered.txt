@@ -1,0 +1,5 @@
+intel.edison.grove.flower.python
+intel.edison.grove.flower.node
+intel.edison.grove.roommonitor.python
+intel.edison.grove.roommonitor.node
+help
