@@ -22,7 +22,7 @@ echo "Creating drivers"
 cd ..
 cd ..
 cd Install/intel.edison.grove.roommonitor.python
-mv room_monitor.py ../
+mv room_monitor.py ../../
 echo "Moved drivers"
 
 ./room_monitor_service_install.sh
