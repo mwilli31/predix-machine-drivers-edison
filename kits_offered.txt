@@ -1,5 +1,3 @@
-intel_edison_grove_flower_python
-intel_edison_grove_flower_node
-intel_edison_grove_roommonitor_python
-intel_edison_grove_roommonitor_node
+intel_edison_room_monitor_grove_python
+intel_edison_room_monitor_grove_node
 help
