@@ -21,9 +21,9 @@ ln -s /usr/local/lib/python2.7/site-packages/* /usr/local/lib/python2.7/dist-pac
 echo "Creating drivers"
 cd ..
 cd ..
-cd Install/intel.edison.grove.roommonitor.python
+cd Install/intel_edison_room_monitor_grove_python
 mv room_monitor.py ../../
 echo "Moved drivers"
 
-./room_monitor_service_install.sh
+./service_install.sh
 echo "Driver Install Complete"
