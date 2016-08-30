@@ -29,19 +29,19 @@ socket.bind("tcp://%s:%s" % (ZMQ_SENSOR_PUB_IP, ZMQ_SENSOR_PUB_PORT))
 while True:
 #Publish sensor data
 	temperatureData = temperature.getTemperature()
-	socket.send_multipart(['Grove_temperatureandhumiditysensor_temperature_1_0-1', dumps({"name": "Grove_temperatureandhumiditysensor_temperature_1_0-1", "datapoints":[[int(time() * 1000), float(temperatureData), quality]]})])
+	socket.send_multipart(['temperature', dumps({"name": "temperature_1", "datapoints":[[int(time() * 1000), float(temperatureData), quality]]})])
 	print str(temperatureData) + " degrees Celsius"
 	humidityData = humidity.getHumidity()
-	socket.send_multipart(['Grove_temperatureandhumiditysensor_humidity_1_0-1', dumps({"name": "Grove_temperatureandhumiditysensor_humidity_1_0-1", "datapoints":[[int(time() * 1000), float(humidityData), quality]]})])
+	socket.send_multipart(['humidity', dumps({"name": "humidity_1", "datapoints":[[int(time() * 1000), float(humidityData), quality]]})])
 	print str(humidityData) + " RH"
 	buttonData = button.value()
-	socket.send_multipart(['Grove_button_1_1-1', dumps({"name": "Grove_button_1_1-1", "datapoints":[[int(time() * 1000), float(buttonData), quality]]})])
+	socket.send_multipart(['button', dumps({"name": "button_1", "datapoints":[[int(time() * 1000), float(buttonData), quality]]})])
 	print str(buttonData) + " value for button"
 	lightData = light.raw_value()
-	socket.send_multipart(['Grove_light_1_1-1', dumps({"name": "Grove_light_1_1-1", "datapoints":[[int(time() * 1000), float(lightData), quality]]})])
+	socket.send_multipart(['light', dumps({"name": "light_1", "datapoints":[[int(time() * 1000), float(lightData), quality]]})])
 	print str(lightData) + " raw light value"
 	motionData = motion.value()
-	socket.send_multipart(['Grove_motionsensor_1_4-1', dumps({"name": "Grove_motionsensor_1_4-1", "datapoints":[[int(time() * 1000), float(motionData), quality]]})])
+	socket.send_multipart(['motion', dumps({"name": "motion_1", "datapoints":[[int(time() * 1000), float(motionData), quality]]})])
 	print str(motionData) + " motion boolean"
 	print "-------------------------"
 
