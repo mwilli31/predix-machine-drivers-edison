@@ -1,6 +1,7 @@
 #!/bin/bash
 #Find upm
 cd /predix/predix-machine-drivers-edison/upm
+echo $(pwd)
 
 #Install Drivers
 mv offered_drivers/th02 src
@@ -21,7 +22,9 @@ ln -s /usr/local/lib/python2.7/site-packages/* /usr/local/lib/python2.7/dist-pac
 echo "Creating drivers"
 cd ..
 cd ..
+echo $(pwd)
 cd Install/intel_edison_room_monitor_grove_python
+echo $(pwd)
 mv room_monitor.py ../../
 echo "Moved drivers"
 
